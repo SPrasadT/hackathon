@@ -35,14 +35,4 @@ This maven java project with appium framework contains code to solve the followi
 - Clone the repository https://github.com/SPrasadT/hackathon.git
 - cd hackathon
 - Install the pCloudy connector jar http://pcloudy-content-distribution.s3.amazonaws.com/pCloudy-Connector-Jars/v11/java/How%20to%20Install%20pCloudy-java-connector.jar%20in%20Maven.txt
-- mvn exec:java -Dexec.mainClass="com.mob.tester.BaseTest" \ 
-	-Dapp.username=MYTESTVAL \ 
-	-Dapp.apikey=MYTESTVAL \
-	-Dapp.deviceManufacturer=MYTESTVAL \
-	-Dapp.deviceVersion=MYTESTVAL \
-	-Dapp.platformVersion=MYTESTVAL \
-	-Dapp.appName=MYTESTVAL \
-	-Dapp.appPackage=MYTESTVAL \
-	-Dapp.appPackage=MYTESTVAL \
-	-Dapp.appPackage=MYTESTVAL \
-	-Dapp.appActivity=MYTESTVAL
+- import on eclipse, run as java application.
