@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Final Result</title>
+      <link href="./resources/style.css" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700" rel="stylesheet">
+   </head>
+   <body>
+      <div class="body_content">
+      <div class="page_container">
+         <div class="row_base">
+            <h3 class="flex"> <span class="font16 text-primary">Execution Summary Report</span> </h3>
+         </div>
+         <div class="row_base">
+            <div class="story_info">
+            <div>
+               <div class="total_sc text-center">                        
+                 <strong> <p class="floatLeft">Total Scenario</p></strong>
+               </div>
+               <div class="total_sc">
+                  <div class="pass">
+                     <p class="floatLeft"> </p>
+                     <p> <span><span>0 </span></span> <br> <span class="font12">Pass Scenario</span> </p>
+                  </div>
+                  <div class="fail">
+                     <p class="floatLeft"></p>
+                     <p class="mleft"> <span><span>1 </span></span> <br> <span class="font12">Fail Scenario</span>  </p>
+                  </div>
+               </div>
+           </div>
+           <div > 
+               <div class="total_sc text-center">
+                
+                  <strong> <p class="floatLeft">Total Pass Cases</p> </strong>
+               </div>
+               <div class="total_sc">
+                  <div class="pass">
+                     <p class="floatLeft"> </p>
+                     <p> <span><span>0 </span></span> <br> <span class="font12">Pass Scenario</span> </p>
+                  </div>
+                  <div class="fail">
+                     <p class="floatLeft"> </p>
+                     <p class="mleft"> <span><span>1 </span></span> <br> <span class="font12">Fail Scenario</span>  </p>
+                  </div>
+                  <div class="fail">
+                     <p class="floatLeft"> </p>
+                     <p class="mleft"> <span><span>0 </span></span> <br> <span class="font12">Skipped Scenario</span></p>
+                  </div>
+               </div>
+				</div>
+           <div >
+               <div class="total_sc text-center">
+                  <strong><p class="floatLeft">Execution Details</p></strong>
+               </div>
+               <div class="total_sc">
+                  <p class="mBTm10"> <span class="text-success">Execution Date</span><span class="floatRight"><span>17/06/2022 </span></span></p>
+                  <p class="mBTm10"><span class="text-success">Execution Start Time</span><span class="floatRight"><span>01:00:51 UTC </span></span></p>
+                 
+                  <p class="mBTm10"> <span class="text-success">Total Execution Time</span><span class="floatRight"><span>00:00:56 </span></span></p>
+               </div>
+            </div>
+            </div>
+            #foreach($scenario in $result)
+            <div class="row_base">
+               <h3 class="flex"><span class="font16 text-primary">Test Scenario Name: <span> $result.get(scenario) </span></span></h3>
+            </div>
+             #end
+            <div class="row_base">
+               <table>
+                  <thead>
+                     <tr>
+                        <th> #Step</th>
+                        <th>Step Description</th>
+                        <th>Expected Data</th>
+                        <th>Actual Data</th>
+                        <th>Status</th>
+                        <th>ScreenShot</th>
+                     </tr>
+                  <tbody>
+                     <tr>
+                        <td>1</td>
+                        <td>valid </td>
+                        <td></td>
+                        <td></td>
+                        <td class="tsgen" width=8%><font size = 2 color = red><b>FAIL</b></td>
+                        <td class="tsgen" width=8%></td>
+                     </tr>
+                     <tr name="stepRow">
+                     <td>$step.stepNum</td>
+                     <td>$.step.Description</td>
+                     <td></td>
+                     <td> </td>
+                     <td class="tsgen" width=8%><font size = 2 color = green><b>PASS</b></td>
+                     <td align="center"><a href="../Screenshots/UPSell Wizard_VALID_1.jpg" target="_blank">screenshot</a></td>
+                     </tr> 
+                     <tr name="stepRow">
+                     <td>$step.stepNum</td>
+                     <td>$.step.Description</td>
+                     <td></td>
+                     <td> </td>
+                     <td class="tsgen" width=8%><font size = 2 color = red><b>FAIL</b></td>
+                     <td align="center"><a href="../Screenshots/Error_UPSell Wizard_17_06_2022_01_01_52.jpg" target="_blank"><img src="./resources/view.png"></a></td>
+                     </tr> 
+                  </tbody>
+               </table>
+            </div>
+           
+         </div>
+      </div>
+      <div class="footer">
+         <div class="page_container">
+            <div class="row_base"> <span class="text-right">Copyright2018 CTC. All Right Reserved.</span> </div>
+         </div>
+      </div>
+   </body>
+</html>

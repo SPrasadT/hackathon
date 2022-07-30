@@ -122,7 +122,7 @@ public class ScenarioStrategy {
 			String stimeStamp=new SimpleDateFormat("DD_MM_yyyy_hh_mm_ss").format(new Date());
 			String sScreenShotPath= "/Screenshots/Screenshot_"+scenarioName.concat(stimeStamp)+".jpg";
 			FileUtils.copyFile(scrFile, new File(System.getProperty("user.dir")+sScreenShotPath));
-			return sScreenShotPath;
+			return "."+sScreenShotPath;
 	}
 		catch(Exception e)
 		{

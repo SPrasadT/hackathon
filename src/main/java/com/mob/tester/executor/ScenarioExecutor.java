@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.mob.tester.result.ResultGenerator;
 import com.mob.tester.result.ResultHolder;
 import com.mob.tester.scenario.strategy.ScenarioStrategy;
 import com.mob.tester.scenario.strategy.ScenatioStrategyHolder;
@@ -35,7 +36,7 @@ public class ScenarioExecutor {
 		}
 		
 		System.out.println(ResultHolder.scenarioResultHolder);
-
+		ResultGenerator.generateReport();
 	}
 
 }

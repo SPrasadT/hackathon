@@ -28,5 +28,6 @@
 			<artifactId>velocity-engine-core</artifactId>
 			<version>2.3</version>
 		</dependency>
+
 	</dependencies>
 </project>
