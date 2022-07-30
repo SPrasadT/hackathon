@@ -1,5 +1,7 @@
 package com.mob.tester.result;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Arrays;
 
@@ -7,13 +9,14 @@ import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 
+import com.google.common.io.Files;
 import com.mob.tester.dto.StepResult;
 
 public class ResultGenerator {
 
 	
 	
-	 public static void generateReport(){
+	 public static void generateReport() throws IOException{
 		
 		
 		for(String scenario:ResultHolder.scenarioResultHolder.keySet()) {
@@ -87,7 +90,7 @@ public class ResultGenerator {
 		//htmlBuilder.append("<body><p>Look at my body!</p></body>");
 		///htmlBuilder.append("</html>");
 		String html = htmlBuilder.toString();
-
+		Files.write(html.getBytes(),new File(System.getProperty("user.dir")+"/result.html"));
         System.out.println(html);
 	}
 	

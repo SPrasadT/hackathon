@@ -32,7 +32,9 @@ This maven java project with appium framework contains code to solve the followi
 
 ## How to run this project
 
-- Clone the repository https://github.com/SPrasadT/hackathon.git
+- Clone the repository - https://github.com/SPrasadT/hackathon.git
 - cd hackathon
-- Install the pCloudy connector jar http://pcloudy-content-distribution.s3.amazonaws.com/pCloudy-Connector-Jars/v11/java/How%20to%20Install%20pCloudy-java-connector.jar%20in%20Maven.txt
-- import on eclipse, run as java application.
+- Install the pCloudy connector jar - http://pcloudy-content-distribution.s3.amazonaws.com/pCloudy-Connector-Jars/v11/java/How%20to%20Install%20pCloudy-java-connector.jar%20in%20Maven.txt
+- mvn exec:java -Dexec.mainClass="com.mob.tester.BaseTest" \ 
+	-Dapp.pCloudyUsername=pCloudyUsername/Email \ 
+	-Dapp.pCloudyApiKey=pCloudyApiKey

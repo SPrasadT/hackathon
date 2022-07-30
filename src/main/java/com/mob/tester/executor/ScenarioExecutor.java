@@ -2,6 +2,8 @@ package com.mob.tester.executor;
 
 
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +21,7 @@ public class ScenarioExecutor {
 	private final Logger LOGGER =LoggerFactory.getLogger(this.getClass());
 	
 	
-	public void executeScenario(AndroidDriver<WebElement> driver) {
+	public void executeScenario(AndroidDriver<WebElement> driver) throws IOException {
 
 		ScenatioStrategyHolder scenatioStrategyHolder=new ScenatioStrategyHolder();
 		

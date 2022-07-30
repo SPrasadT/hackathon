@@ -32,11 +32,17 @@ public class Scenario2 extends ScenarioStrategy {
 		List<StepResult> stepResultList = new ArrayList<StepResult>();
 		
 		try {
+			//Login
 			stepResultList.addAll(appLogin(driver));
 
-			//driver.findElement(By.id("com.pcloudyhackathon:id/login")).click();
+			List<WebElement> elements =driver.findElements(By.id("com.pcloudyhackathon:id/login"));
+			if(!elements.isEmpty()) {
+				elements.get(0).click();
+			}
+			elements.clear();
 			
-			List<WebElement> elements = driver.findElements(By.id("com.pcloudyhackathon:id/tv_name"));
+			//Click on Draw option 
+			 elements = driver.findElements(By.id("com.pcloudyhackathon:id/tv_name"));
 			
 			for(WebElement element:elements) {
 				if(element.getText().equals("Draw")) {
@@ -44,6 +50,7 @@ public class Scenario2 extends ScenarioStrategy {
 					break;
 				}
 			}
+			//Drawface
 			drawFace(driver);
 			stepResultList.add(generateStepResult(this.getClass().getName(),"Draw smiley face :)","PASS","","",driver));
 			

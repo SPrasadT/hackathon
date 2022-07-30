@@ -22,6 +22,7 @@ import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.mob.tester.actions.driver.ActionDriver;
 import com.mob.tester.dto.StepResult;
 import com.ssts.pcloudy.Connector;
 import com.ssts.pcloudy.exception.ConnectError;
@@ -51,21 +52,20 @@ public class ScenarioStrategy {
 	
 	public List<StepResult> appLogin(AndroidDriver<WebElement> driver) throws IOException, ConnectError {
 		List<StepResult> stepResultList = new ArrayList<StepResult>();
-		
+		//Launch APP
 		driver.launchApp();
 		stepResultList.add(generateStepResult(this.getClass().getName(),"Launch APP","PASS","","",driver));
 		
+		//GetCoordinates 
 		JSONObject obj = new JSONObject(getCoordinates(driver));
         JSONArray arr = obj.getJSONArray("data");
         int xCoord = arr.getJSONObject(0).getInt("Left");
-        arr.getJSONObject(0).getInt("Height");
-        int yCoord = arr.getJSONObject(0).getInt("Top");
-        arr.getJSONObject(0).getInt("Width");
+        int yCoord = arr.getJSONObject(0).getInt("Top");        
         LOGGER.info("xCoord: "+xCoord);
         LOGGER.info("yCoord: "+yCoord);;
 		stepResultList.add(generateStepResult(this.getClass().getName(),"Get Coordinates","PASS","",xCoord+","+yCoord,driver));
 
-        
+        //click on coordinates
         clickOnCoordinates(xCoord,yCoord,driver);
         stepResultList.add(generateStepResult(this.getClass().getName(),"Click On Login Coordinates","PASS","",xCoord+","+yCoord,driver));
 
@@ -79,10 +79,10 @@ public class ScenarioStrategy {
 	String getCoordinates(AndroidDriver<WebElement> driver) throws IOException, ConnectError{
 		
 		BufferedImage bufferedImage = ImageIO.read(((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE));
-		ImageIO.write(bufferedImage, "png", new File("/tmp/Login.png"));
+		ImageIO.write(bufferedImage, "png", new File(System.getProperty("user.dir")+"/Login.png"));
 
 		
-		String baseImageId = getOCRCoords(new File("/tmp/Login.png"));
+		String baseImageId = getImgId(new File(System.getProperty("user.dir")+"/Login.png"));
 		LOGGER.info("baseImageId: "+baseImageId);
         Map< String, Object> params = new HashMap< String, Object>();
         params.put("imageId", baseImageId);
@@ -92,9 +92,9 @@ public class ScenarioStrategy {
         JSONObject obj = new JSONObject(ocrResponse);
         JSONArray arr = obj.getJSONArray("data");
         int xCoord = arr.getJSONObject(0).getInt("Left");
-        arr.getJSONObject(0).getInt("Height");
+        
         int yCoord = arr.getJSONObject(0).getInt("Top");
-        arr.getJSONObject(0).getInt("Width");
+        
         LOGGER.info("xCoord: "+xCoord);
         LOGGER.info("yCoord: "+yCoord);
         
@@ -106,10 +106,10 @@ public class ScenarioStrategy {
         touchAction.tap(PointOption.point(xCoord, yCoord)).perform();
 	}
 	
-	public String getOCRCoords (File fileToBeUploaded) throws IOException, ConnectError {
+	public String getImgId (File fileToBeUploaded) throws IOException, ConnectError {
         Connector con = new Connector("https://device.pcloudy.com/");
         //To get the Access key - Login to pCloudy platform->Go to Profile and click on Settings->Copy the access key
-        String authToken = con.authenticateUser("gupta.punit.pg@gmail.com", "km7j422xyh6txbr38t7qb2yd");
+        String authToken = con.authenticateUser(ActionDriver.userName, ActionDriver.apiKey);
         System.out.println(Files.probeContentType(fileToBeUploaded.toPath()));
         String baseImageId = con.getImageId(authToken, fileToBeUploaded);
         

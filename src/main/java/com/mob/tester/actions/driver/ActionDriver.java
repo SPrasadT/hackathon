@@ -10,33 +10,24 @@ import io.appium.java_client.android.AndroidDriver;
 
 public class ActionDriver {
 
+	public static String userName;
+	public static String apiKey;
+	
+	public ActionDriver(){
+		 userName = System.getProperty("app.pCloudyUsername");
+
+		 apiKey = System.getProperty("app.pCloudyApiKey");
+	}
+	
+	
+	
+	
 	public AndroidDriver<WebElement> getActionDriver() {
-		/*
-		 * DesiredCapabilities capabilities = new DesiredCapabilities();
-		 * capabilities.setCapability("pCloudy_Username", "gupta.punit.pg@gmail.com");
-		 * capabilities.setCapability("pCloudy_ApiKey", "km7j422xyh6txbr38t7qb2yd");
-		 * capabilities.setCapability("pCloudy_DurationInMinutes", 2);
-		 * capabilities.setCapability("newCommandTimeout", 600);
-		 * capabilities.setCapability("launchTimeout", 90000);
-		 * capabilities.setCapability("pCloudy_DeviceFullName",
-		 * "ONEPLUS_9R_Android_11.0.0_feae8");
-		 * capabilities.setCapability("platformVersion", "11.0.0");
-		 * capabilities.setCapability("platformName", "Android");
-		 * capabilities.setCapability("automationName", "uiautomator2");
-		 * capabilities.setCapability("pCloudy_ApplicationName",
-		 * "PCloudyHackathon.apk"); capabilities.setCapability("appPackage",
-		 * "com.pcloudyhackathon.ui.login.LoginActivity");
-		 * capabilities.setCapability("appActivity", "com.pcloudyhackathon");
-		 * capabilities.setCapability("pCloudy_WildNet", "false");
-		 * capabilities.setCapability("pCloudy_EnableVideo", "true");
-		 * capabilities.setCapability("pCloudy_EnablePerformanceData", "true");
-		 * capabilities.setCapability("pCloudy_EnableDeviceLogs", "true");
-		 */
 		
 		
 		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setCapability("pCloudy_Username", "gupta.punit.pg@gmail.com");
-		capabilities.setCapability("pCloudy_ApiKey", "km7j422xyh6txbr38t7qb2yd");
+		capabilities.setCapability("pCloudy_Username", userName);
+		capabilities.setCapability("pCloudy_ApiKey", apiKey);
 		capabilities.setCapability("pCloudy_DurationInMinutes", 10);
 		capabilities.setCapability("newCommandTimeout", 600);
 		capabilities.setCapability("launchTimeout", 90000);
@@ -49,10 +40,9 @@ public class ActionDriver {
 		capabilities.setCapability("appPackage", "com.pcloudyhackathon");
 		capabilities.setCapability("appActivity", "com.pcloudyhackathon.ui.login.LoginActivity");
 		capabilities.setCapability("pCloudy_WildNet", "false");
-		capabilities.setCapability("pCloudy_EnableVideo", "false");
-		capabilities.setCapability("pCloudy_EnablePerformanceData", "false");
-		capabilities.setCapability("pCloudy_EnableDeviceLogs", "false");
-		//AndroidDriver<WebElement> driver = new AndroidDriver<WebElement>(new URL("https://device.pcloudy.com/appiumcloud/wd/hub"), capabilities);
+		capabilities.setCapability("pCloudy_EnableVideo", "true");
+		capabilities.setCapability("pCloudy_EnablePerformanceData", "true");
+		capabilities.setCapability("pCloudy_EnableDeviceLogs", "true");
 		
 		AndroidDriver<WebElement> driver = null;
 		try {

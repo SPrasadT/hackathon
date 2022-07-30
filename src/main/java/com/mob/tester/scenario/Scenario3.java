@@ -1,15 +1,12 @@
 package com.mob.tester.scenario;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.json.JSONException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import com.mob.tester.dto.StepResult;
 import com.mob.tester.scenario.strategy.ScenarioStrategy;
-import com.ssts.pcloudy.exception.ConnectError;
 
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
@@ -22,15 +19,13 @@ public class Scenario3 extends ScenarioStrategy{
     @Override
 	public List<StepResult> ExecuteScenario(AndroidDriver<WebElement> driver){
 		List<StepResult> stepResultList = new ArrayList<StepResult>();
-		//driver.launchApp();
-		//stepResultList.add(generateStepResult(this.getClass().getName(),"Launch APP","PASS","","",driver));
 		
 		try {
 			stepResultList.addAll(appLogin(driver));
 			
 			driver.findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.widget.LinearLayout/androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout[3]/android.widget.TextView")).click();
 	        Thread.sleep(1000);
-	        //
+	        
 	        //first for the intial location to be long pressed
 	        WebElement first= driver.findElementById("com.pcloudyhackathon:id/button");
 	        //second location on which you need to move to
@@ -46,7 +41,7 @@ public class Scenario3 extends ScenarioStrategy{
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			stepResultList.add(generateStepResult(this.getClass().getName(),"Draw smiley face :)","Fail","","",driver));
+			stepResultList.add(generateStepResult(this.getClass().getName(),"Drag and Drop","Fail","","",driver));
 		}
 	return stepResultList;
 	};
